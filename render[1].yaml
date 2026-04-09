@@ -1,0 +1,45 @@
+services:
+  - type: web
+    name: billshield
+    env: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm start
+    healthCheckPath: /health
+    autoDeploy: false
+    envVars:
+      - key: NODE_VERSION
+        value: 20
+      - key: FORCE_HTTPS
+        value: true
+      - key: APP_URL
+        sync: false
+      - key: CHECKOUT_URL
+        sync: false
+      - key: CRON_SECRET
+        sync: false
+      - key: APP_ENCRYPTION_KEY
+        sync: false
+      - key: VAPID_PUBLIC_KEY
+        sync: false
+      - key: VAPID_PRIVATE_KEY
+        sync: false
+      - key: VAPID_SUBJECT
+        sync: false
+      - key: TWILIO_ACCOUNT_SID
+        sync: false
+      - key: TWILIO_AUTH_TOKEN
+        sync: false
+      - key: TWILIO_FROM_NUMBER
+        sync: false
+  - type: cron
+    name: billshield-reminders
+    env: node
+    schedule: '0 8 * * *'
+    buildCommand: npm install
+    startCommand: 'curl -X POST $APP_URL/api/reminders/run -H "x-cron-secret: $CRON_SECRET"'
+    envVars:
+      - key: APP_URL
+        sync: false
+      - key: CRON_SECRET
+        sync: false

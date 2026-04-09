@@ -1,0 +1,16 @@
+PORT=3000
+APP_URL=https://your-domain.com
+CHECKOUT_URL=https://your-checkout-link.com
+CRON_SECRET=replace-with-a-long-random-secret
+APP_ENCRYPTION_KEY=replace-with-a-long-random-secret
+FORCE_HTTPS=true
+
+# Web Push (required for push reminders)
+VAPID_PUBLIC_KEY=
+VAPID_PRIVATE_KEY=
+VAPID_SUBJECT=mailto:you@example.com
+
+# Twilio (required for SMS reminders)
+TWILIO_ACCOUNT_SID=
+TWILIO_AUTH_TOKEN=
+TWILIO_FROM_NUMBER=

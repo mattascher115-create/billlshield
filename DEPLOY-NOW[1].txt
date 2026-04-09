@@ -1,0 +1,23 @@
+BILLSHIELD DEPLOY NOW
+
+1) Fast local test
+   npm install
+   npm start
+   open http://localhost:3000
+
+2) Fastest production deploy
+   - Create a new Render Web Service from this folder
+   - Render will read render.yaml
+   - Add APP_URL as your Render URL after first deploy
+   - Add CHECKOUT_URL from Stripe/Gumroad/Lemon Squeezy when ready to sell
+   - Optional: add Twilio env vars for SMS
+
+3) Already completed for you
+   - Encryption key generated
+   - VAPID keys generated
+   - Buy buttons fall back to /app/ if no checkout is set
+   - Health check endpoint added
+
+4) Still requires YOUR accounts
+   - payment processor checkout link
+   - Twilio account for SMS sender number
